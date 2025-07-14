@@ -15,29 +15,26 @@ label start:
 
     call intro
     
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
-
-    scene bg room
-
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
-
-    show eileen happy
-
-    while day <= DAY_NUMBER:
-        #block of code to run
-
-        call awakening
+    while day < DAY_MAX - 1:
+        $ add_day()
 
         show screen hud
+        call getting_up
 
-        p "Hello, let's hide"
+        
+        if is_week_day():
+            call weekday
+        else:
+            if day_in_week == 5:
+                call saturday
+            else:
+                call sunday
+            "It's the week-end"
 
-        hide screen hud
+        "Time to sleep"
 
-        $ day += 1
+        $ gain_confidence(3)
+
+    call last_day
 
     return
