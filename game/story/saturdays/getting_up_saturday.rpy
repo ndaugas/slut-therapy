@@ -1,9 +1,9 @@
-label getting_up:
+label getting_up_saturday:
 
     if day == 1:
         call first_getting_up
-
-    call dressing
+    else:
+        call getting_up_usual_saturday
 
     return
 
@@ -26,7 +26,7 @@ label first_getting_up:
 
     p "Qu'est-ce que j'ai accepté ?"
 
-    "Un léger frisson vous parcourt en repensant à ses mots"
+    "Un léger frisson vous parcourt en repensant à ses paroles."
     
     scene bar with fade
 
@@ -55,7 +55,7 @@ label first_getting_up:
 
     s "Coucou Maman, regarde ce que je vais faire au baby athlé !"
 
-    "Simon, quatre ans et demi, déboule à son tour et exécute une roulade (ou presque) sur le lit, déjà surexcité."
+    "Simon, quatre ans et demi, déboule à son tour et exécute une roulade (ou quelque chose qui y ressemble) sur le lit, déjà surexcité."
 
     $ show_isabelle("smile")
 
@@ -64,40 +64,5 @@ label first_getting_up:
     p "J'arrive, j'arrive…"
 
     "Un samedi comme un autre. Enfin, non, pas tout à fait. Les défis trottent tranquillement dans votre tête tandis que la vie normale continue autour de vous."
-
-    return
-
-
-label dressing:
-
-    scene room_morning 
-    with dissolve
-
-    "Il est temps de vous habiller."
-
-    if day == 1:
-        "C'est le premier moment que vous redoutiez."
-        "Pourtant, c'est plutôt facile, en soi. Il y en a des vêtements dans votre dressing qui pourrait satisfaire le premier défi." 
-        "Ce sont vos vêtements, rien qui ne soit déjà approuvé par vous-même !"
-        "Pourquoi est-ce aussi difficile alors."
-        "Après tout, vous n'avez qu'à transporter vos enfants à leurs activités, vous verrez peu de monde. Et à la zumba, vous êtes entre filles."
-        "Vous essayez de vous rassurer mais le regard des pairs vous importe plus que vous le voulez. Et puis il y a le coach."
-        "N'importe quoi. Vous tentez de chasser ces pensées ridicules de votre tête. Il est temps de décider"
-
-    label dressing_choice:
-        menu: 
-            "Comment vous habillez-vous ?"
-
-            "Porter une jupe courte":
-                if try_action(compute_cost(1), 1):
-                    "Je porte une jupe !"
-                else:
-                    jump dressing_choice
-        
-            "Porter un décolleter":
-                "Porter un décolleter"
-
-    call check_level
-    
 
     return

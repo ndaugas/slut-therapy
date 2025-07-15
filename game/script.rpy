@@ -15,10 +15,11 @@ label start:
 
     call intro
     
+    show screen hud
+
     while day < DAY_MAX - 1:
         $ add_day()
 
-        show screen hud
         call getting_up
 
         
